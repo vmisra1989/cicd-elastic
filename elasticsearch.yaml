@@ -5,16 +5,18 @@ metadata:
   namespace: elastic-system
 spec:
   version: 8.13.4
+  image: vmisra1989/elasticsearch:9.0.3  # 👈 use your own image
   nodeSets:
   - name: default
     count: 1
     config:
       node.roles: ["master", "data", "ingest"]
+      node.store.allow_mmap: false
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
       spec:
-        accessModes: [ "ReadWriteOnce" ]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 5Gi
