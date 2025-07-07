@@ -5,11 +5,15 @@ metadata:
   namespace: elastic-system
 spec:
   type: NodePort
-  selector:
-    common.k8s.elastic.co/type: elasticsearch
-    elasticsearch.k8s.elastic.co/cluster-name: quickstart
   ports:
     - name: http
       port: 9200
       targetPort: 9200
-      nodePort: 30920  # Can be any port in the 30000-32767 range
+      nodePort: 30920  # Or let K8s assign it if omitted
+    - name: transport
+      port: 9300
+      targetPort: 9300
+      nodePort: 30930
+  selector:
+    common.k8s.elastic.co/type: elasticsearch
+    elasticsearch.k8s.elastic.co/cluster-name: quickstart
