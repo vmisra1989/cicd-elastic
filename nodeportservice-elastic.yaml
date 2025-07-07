@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: quickstart-es-http
+  namespace: elastic-system
+spec:
+  type: NodePort
+  selector:
+    common.k8s.elastic.co/type: elasticsearch
+    elasticsearch.k8s.elastic.co/cluster-name: quickstart
+  ports:
+    - name: http
+      port: 9200
+      targetPort: 9200
+      nodePort: 30920  # Can be any port in the 30000-32767 range
