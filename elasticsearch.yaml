@@ -1,11 +1,12 @@
+# elasticsearch.yaml
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: quickstart
+  name: es-cluster-prod
   namespace: elastic-system
 spec:
   version: 9.0.2
-  image: vmisra1989/elasticsearch:9.0.2  # 👈 use your own image
+  image: vmisra1989/elasticsearch:9.0.2  # your custom image
   nodeSets:
   - name: default
     count: 1
