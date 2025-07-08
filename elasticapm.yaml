@@ -22,7 +22,13 @@ spec:
         - containerPort: 8200
         env:
         - name: ELASTICSEARCH_HOSTS
-          value: "https://localhost:9200"  # Replace with your ES URL if different
+          value: "https://localhost:9200" 
+        - name: ELASTICSEARCH_USERNAME
+          value: "elastic"
+        - name: ELASTICSEARCH_PASSWORD
+          value: "864Ftm5ztz13vXahe29Dt3f6"
+        - name: ELASTICSEARCH_SSL_VERIFICATION_MODE
+          value: "none" # Replace with your ES URL if different
         - name: APM_SERVER_RUM_ENABLED
           value: "true"  # Enable RUM if you want to capture browser APM data
         resources:
