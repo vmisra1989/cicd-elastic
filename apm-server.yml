@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apm-server-config
+  namespace: elastic-system
+data:
+  apm-server.yml: |
+    apm-server:
+      host: "0.0.0.0:8200"
+      rum:
+        enabled: true
+
+    output.elasticsearch:
+      hosts: ["https://es-cluster-prod-es-http.elastic-system.svc:9200"]
+      username: "elastic"
+      password: "864Ftm5ztz13vXahe29Dt3f6"
+      ssl.verification_mode: none
+
+    setup.template.enabled: true
+
+    logging:
+      level: info
