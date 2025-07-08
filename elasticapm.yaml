@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elastic-apm-server
+  namespace: elastic-system
+  labels:
+    app: elastic-apm-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elastic-apm-server
+  template:
+    metadata:
+      labels:
+        app: elastic-apm-server
+    spec:
+      containers:
+      - name: apm-server
+        image: vmisra1989/elastic-apm-server:9.0.2-amd64
+        ports:
+        - containerPort: 8200
+        env:
+        - name: ELASTICSEARCH_HOSTS
+          value: "https://localhost:9200"  # Replace with your ES URL if different
+        - name: APM_SERVER_RUM_ENABLED
+          value: "true"  # Enable RUM if you want to capture browser APM data
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elastic-apm-server
+  namespace: elastic-system
+spec:
+  selector:
+    app: elastic-apm-server
+  ports:
+  - protocol: TCP
+    port: 8200
+    targetPort: 8200
+  type: NodePort
