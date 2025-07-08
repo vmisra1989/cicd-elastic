@@ -4,7 +4,7 @@ metadata:
   name: quickstart
   namespace: elastic-system
 spec:
-  version: 9.0.3
+  version: 8.13.4
   image: vmisra1989/elasticsearch:9.0.3  # 👈 use your own image
   nodeSets:
   - name: default
