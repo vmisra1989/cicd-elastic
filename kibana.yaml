@@ -4,8 +4,8 @@ metadata:
   name: quickstart
   namespace: elastic-system
 spec:
-  version: 8.18.0
+  version: 9.0.2
   count: 1
-  image: vmisra1989/kibana:8.18.0
+  image: vmisra1989/kibana:9.0.2
   elasticsearchRef:
     name: quickstart
