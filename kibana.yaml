@@ -1,4 +1,3 @@
-# kibana.yaml
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
@@ -6,7 +5,11 @@ metadata:
   namespace: elastic-system
 spec:
   version: 9.0.2
+  image: vmisra1989/kibana:9.0.2  # 👈 your custom image
   count: 1
-  image: vmisra1989/kibana:9.0.2  # your custom image
   elasticsearchRef:
-    name: es-cluster-prod  # references the Elasticsearch cluster above
+    name: es-cluster-prod
+  http:
+    service:
+      spec:
+        type: NodePort             # 👈 expose via NodePort
