@@ -18,6 +18,8 @@ spec:
       containers:
       - name: apm-server
         image: vmisra1989/elastic-apm-server:9.0.2
+        args:
+          - --enable-otlp
         ports:
         - containerPort: 8200
         volumeMounts:
