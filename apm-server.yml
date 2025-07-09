@@ -25,5 +25,6 @@ data:
     setup.template.enabled: true
 
     logging:
-      level: info
+      level: debug
+      selectors: ["*"]
       to_stdout: true
