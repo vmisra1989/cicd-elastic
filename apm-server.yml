@@ -9,6 +9,12 @@ data:
       host: "0.0.0.0:8200"
       rum:
         enabled: true
+      otlp:
+        enabled: true
+        grpc:
+          host: "0.0.0.0:8200"
+        http:
+          host: "0.0.0.0:8200"
 
     output.elasticsearch:
       hosts: ["https://es-cluster-prod-es-http.elastic-system.svc:9200"]
@@ -20,3 +26,4 @@ data:
 
     logging:
       level: info
+      to_stdout: true
