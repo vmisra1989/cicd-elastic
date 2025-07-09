@@ -12,9 +12,9 @@ data:
       otlp:
         enabled: true
         grpc:
-          host: "0.0.0.0:8200"
+          host: "0.0.0.0:4317"
         http:
-          host: "0.0.0.0:8200"
+          host: "0.0.0.0:4318"
 
     output.elasticsearch:
       hosts: ["https://es-cluster-prod-es-http.elastic-system.svc:9200"]
