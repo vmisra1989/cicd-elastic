@@ -14,6 +14,10 @@ data:
         protocols:
           grpc: {}
           http: {}
+      
+      auth:
+        secret_token: "N3Rha0daZ0J5Z0RILVBja1d1Z3Q6U1NYU0RHU3B0RXYwNUowdTY3RTVldw=="  # 🔐 Add this line
+
 
     output.elasticsearch:
       hosts: ["https://es-cluster-prod-es-http.elastic-system.svc:9200"]
