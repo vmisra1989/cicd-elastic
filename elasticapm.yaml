@@ -1,11 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: elastic-apm-server
   namespace: elastic-system
   labels:
     app: elastic-apm-server
 spec:
+  serviceName: elastic-apm-server-headless
   replicas: 1
   selector:
     matchLabels:
@@ -16,25 +17,25 @@ spec:
         app: elastic-apm-server
     spec:
       containers:
-      - name: apm-server
-        image: vmisra1989/elastic-apm-server:9.0.2
-        ports:
-        - containerPort: 8200
-        volumeMounts:
-        - name: config-volume
-          mountPath: /usr/share/apm-server/apm-server.yml
-          subPath: apm-server.yml
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
+        - name: apm-server
+          image: vmisra1989/elastic-apm-server:9.0.2
+          ports:
+            - containerPort: 8200
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/share/apm-server/apm-server.yml
+              subPath: apm-server.yml
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
       volumes:
-      - name: config-volume
-        configMap:
-          name: apm-server-config
+        - name: config-volume
+          configMap:
+            name: apm-server-config
 ---
 apiVersion: v1
 kind: Service
@@ -45,7 +46,22 @@ spec:
   selector:
     app: elastic-apm-server
   ports:
-  - protocol: TCP
-    port: 8200
-    targetPort: 8200
+    - protocol: TCP
+      port: 8200
+      targetPort: 8200
   type: ClusterIP
+---
+# Required: Headless service for StatefulSet
+apiVersion: v1
+kind: Service
+metadata:
+  name: elastic-apm-server-headless
+  namespace: elastic-system
+spec:
+  clusterIP: None
+  selector:
+    app: elastic-apm-server
+  ports:
+    - protocol: TCP
+      port: 8200
+      targetPort: 8200
