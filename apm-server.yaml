@@ -20,7 +20,7 @@ data:
 
 
     output.elasticsearch:
-      hosts: ["https://es-cluster-prod-es-http.elastic-system.svc.cluster.local:9200"]
+      hosts: ["https://es-cluster-prod-es-http.elastic-system.svc:9200"]
       username: "elastic"
       password: "864Ftm5ztz13vXahe29Dt3f6"
       ssl.verification_mode: none
