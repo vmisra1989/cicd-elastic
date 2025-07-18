@@ -1,4 +1,3 @@
-# kibana.yaml
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
@@ -7,6 +6,10 @@ metadata:
 spec:
   version: 9.0.2
   count: 1
-  image: vmisra1989/kibana:9.0.2  # your custom image
+  image: vmisra1989/kibana:9.0.2
   elasticsearchRef:
-    name: es-cluster-prod  # references the Elasticsearch cluster above
+    name: es-cluster-prod
+  config:
+    xpack.apm.enabled: true
+    xpack.apm.ui.enabled: true
+    xpack.apm.ui.index: "apm-*"
