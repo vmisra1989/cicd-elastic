@@ -12,10 +12,8 @@ data:
       otlp:
         enabled: true 
         protocols:
-          grpc:
-            enabled: true
-          http:
-            enabled: true
+          grpc:{}
+          http:{}
       
       auth:
         secret_token: "Wl9sQ0xKZ0JWNlJDY3RrRTlvY0U6cWZ4X0lxX0dwQXE2TGptdkFNWEpnQQ=="  # 🔐 Add this line
