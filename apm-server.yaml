@@ -22,7 +22,7 @@ data:
     output.elasticsearch:
       hosts: ["https://es-cluster-prod-es-http.elastic-system.svc:9200"]
       username: "elastic"
-      password: "864Ftm5ztz13vXahe29Dt3f6"
+      password: "5m6JUx806u5WPtlgtMw595y1"
       ssl.verification_mode: none
 
     setup.template.enabled: true
