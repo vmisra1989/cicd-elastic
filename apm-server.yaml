@@ -10,10 +10,12 @@ data:
       rum:
         enabled: true
       otlp:
-        enabled: true
+        enabled: true 
         protocols:
-          grpc: {}
-          http: {}
+          grpc:
+            enabled: true
+          http:
+            enabled: true
       
       auth:
         secret_token: "N3Rha0daZ0J5Z0RILVBja1d1Z3Q6U1NYU0RHU3B0RXYwNUowdTY3RTVldw=="  # 🔐 Add this line
