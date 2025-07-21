@@ -18,7 +18,7 @@ data:
             enabled: true
       
       auth:
-        secret_token: "N3Rha0daZ0J5Z0RILVBja1d1Z3Q6U1NYU0RHU3B0RXYwNUowdTY3RTVldw=="  # 🔐 Add this line
+        secret_token: "Wl9sQ0xKZ0JWNlJDY3RrRTlvY0U6cWZ4X0lxX0dwQXE2TGptdkFNWEpnQQ=="  # 🔐 Add this line
 
 
     output.elasticsearch:
